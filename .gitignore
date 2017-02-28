@@ -8,3 +8,7 @@ src/makefile
 src/test
 src/*.o
 src/*.swp
+.settings/
+.cproject
+.project
+/Debug/
