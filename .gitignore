@@ -1,0 +1,10 @@
+bin/
+docs/
+data/car.data
+data/contact-lenses.data
+data/iris.data
+src/compile.bash
+src/makefile
+src/test
+src/*.o
+src/*.swp
