@@ -8,6 +8,7 @@
 #ifndef DECISIONTREEMAKER_H_
 #define DECISIONTREEMAKER_H_
 
+#include "Node.h"
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -24,9 +25,9 @@
 // Additionally execution times are stored in execTime.csv and execTimeSW.csv for
 //
 // Example:
-// 		ComplexityAnalyzer ca(unit,slidingWindowSize);
-//		ca.analyzeDocument(document, type);
-//		ca.analyzeDocumentSlidingWindows(document, type);
+// 		DecisionTreeMaker dtm;
+//		dtm.createDecisionTree(document, type);
+
 
 class DecisionTreeMaker {
 public:
@@ -47,13 +48,18 @@ private:
 	// Uses std::transform to replace all the chars in the string to lowercase
 	// inputs:
 	//		std::string str: String to be modified
-        void parseFileWithHeaders(std::string examples_file_wh);
-        // Uses std::replace_if to replace invalid characters with white spaces
-        // Uses std::transform to replace all the chars in the string to lowercase
-        // inputs:
-        //              std::string str: String to be modified        
+	void parseFileWithHeaders(std::string examples_file_wh);
+
+	// Uses std::replace_if to replace invalid characters with white spaces
+	// Uses std::transform to replace all the chars in the string to lowercase
+	// inputs:
+	//              std::string str: String to be modified
 	void parseFileNoHeaders(std::string examples_file_nh);
 	
+	void id3();
+
+	Node tree;
+
 };
 
 #endif /* DECISIONTREEMAKER_H_ */

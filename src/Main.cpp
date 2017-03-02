@@ -2,9 +2,10 @@
 
 int main()
 {
+
 	DecisionTreeMaker dtm;
-	dtm.createDecisionTree("../data/fishing.data",0);
+	dtm.createDecisionTree("/home/jcarcamo/git/CIS678-DecisionTrees/data/fishing.data",0);
         std::cout<<"Press any key to continue"<<std::endl;
 	getchar();
-	dtm.createDecisionTree("../data/fishing.data",1);
+	dtm.createDecisionTree("/home/jcarcamo/git/CIS678-DecisionTrees/data/fishing.data",1);
 }
