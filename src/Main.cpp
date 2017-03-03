@@ -1,11 +1,19 @@
 #include "DecisionTreeMaker.h"
 
-int main()
+int main(int argc, char* argv[])
 {
-
+	if (argc != 2) 
+	{
+		std::cerr << "Incorrect Number of arguments." << std::endl;
+		std::cerr << "Usage ./DecisionTrees <Training Examples File>" << std::endl;
+	}
+	std::string filePath(argv[1]);
+	
 	DecisionTreeMaker dtm;
-	dtm.createDecisionTree("/home/jcarcamo/git/CIS678-DecisionTrees/data/fishing.data",0);
-        std::cout<<"Press any key to continue"<<std::endl;
+	dtm.createDecisionTree(filePath,0);
+    //std::cout<<"Press any key to continue"<<std::endl;
+	//getchar();
+	//dtm.createDecisionTree(filePath,1);
+	std::cout << "Finished. Press any key to exit" << std::endl;
 	getchar();
-	dtm.createDecisionTree("/home/jcarcamo/git/CIS678-DecisionTrees/data/fishing.data",1);
 }

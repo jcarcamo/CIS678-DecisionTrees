@@ -72,7 +72,6 @@ void Node::printNode(std::string depth){
 	depth = depth + "-";
 	for(Node node : this->children)
 	{
-
 		node.printNode(depth);
 	}
 }

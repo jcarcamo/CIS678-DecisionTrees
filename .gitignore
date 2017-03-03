@@ -8,7 +8,18 @@ src/makefile
 src/test
 src/*.o
 src/*.swp
+# eclipse project specific settings
 .settings/
 .cproject
 .project
 /Debug/
+# Visual Studio specific settings
+.vs/
+DecisionTrees.VC.db
+DecisionTrees.vcxproj.filters
+DecisionTrees.vcxproj.user
+DecisionTrees.VC.VC.opendb
+DecisionTrees.sln
+DecisionTrees.vcxproj
+Release/
+x64/

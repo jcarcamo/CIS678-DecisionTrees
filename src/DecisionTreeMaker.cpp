@@ -91,7 +91,7 @@ void DecisionTreeMaker::id3(){
 	this->tree.addChild(child3);
 
 
-	std::cout << "Coming Soon, meanwhile see this beautiful tree:" <<std::endl;
+	std::cout << "ID3 Coming Soon, meanwhile see this beautiful tree:" <<std::endl;
 	this->tree.printNode("|-");
 }
 
@@ -100,11 +100,11 @@ void DecisionTreeMaker::createDecisionTree(std::string examples_file_path, int t
 	switch(type){
 		case 0:
 			this->parseFileWithHeaders(examples_file_path);
-			//this->id3();
+			this->id3();
 			break;
 		case 1:
-			this->parseFileNoHeaders(examples_file_path);
-			this->id3();
+			//this->parseFileNoHeaders(examples_file_path);
+			//this->id3();
 			break;
 		default:
 			std::cerr << "Undefined type of example file!" << std::endl;
@@ -114,7 +114,7 @@ void DecisionTreeMaker::createDecisionTree(std::string examples_file_path, int t
 	std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::microseconds>( t2 - t1 ).count();
 	std::string execTimeFileName = "./execTime.csv";
-	std::cout << execTimeFileName << "(in microseconds)" << duration << std::endl;
+	std::cout << execTimeFileName << "(in microseconds) " << duration << std::endl;
 	/*
 	std::string execTimeFileName = "./execTime.csv";
 	std::ofstream resultFile(execTimeFileName, std::ios_base::app);
