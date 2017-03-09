@@ -6,6 +6,7 @@ int main(int argc, char* argv[])
 	{
 		std::cerr << "Incorrect Number of arguments." << std::endl;
 		std::cerr << "Usage ./DecisionTrees <Training Examples File>" << std::endl;
+		exit(1);
 	}
 	std::string filePath(argv[1]);
 	

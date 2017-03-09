@@ -23,3 +23,5 @@ DecisionTrees.sln
 DecisionTrees.vcxproj
 Release/
 x64/
+#Third-party-libs
+vendor/

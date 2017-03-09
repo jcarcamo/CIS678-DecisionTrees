@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <json_adapter.h>
 
 class Node {
 public:
@@ -29,6 +30,9 @@ public:
 	std::vector<Node> getChildren();
 	std::string getName();
 	std::string getRule();
+
+	//Needed for esj to work
+	void serialize(JSON::Adapter& adapter);
 
 	void printNode(std::string depth);
 

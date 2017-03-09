@@ -75,3 +75,10 @@ void Node::printNode(std::string depth){
 		node.printNode(depth);
 	}
 }
+
+void Node::serialize(JSON::Adapter& adapter){
+	JSON::Class root(adapter, "Node");
+	JSON_E(adapter, name);
+	JSON_E(adapter, rule);
+	JSON_T(adapter, children);
+}

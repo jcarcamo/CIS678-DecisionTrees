@@ -18,7 +18,12 @@
 #include <unordered_map>
 #include <deque>
 #include <vector>
+#include <iterator>
 #include <chrono>
+#include <cstdlib>
+#include <json_writer.h>
+//#include <json_reader.h>
+#include <pt.h>
 
 // for simple analysis, and analyzedDocumentsSWData.csv for SW analysis.
 //
@@ -43,7 +48,11 @@ public:
 	virtual ~DecisionTreeMaker();
 
 private:
-
+	enum {
+		CLASSES=1,
+		FEATURES=2,
+		EXAMPLES=3,
+	};
 	// Uses std::replace_if to replace invalid characters with white spaces
 	// Uses std::transform to replace all the chars in the string to lowercase
 	// inputs:
@@ -56,9 +65,17 @@ private:
 	//              std::string str: String to be modified
 	void parseFileNoHeaders(std::string examples_file_nh);
 	
+	std::vector<std::string> split(const char *str, char c = ' ');
+	int findFeatureValueIndex(std::vector<std::string> feature, std::string featureValue);
+	void printExamples();
+
 	void id3();
 
 	Node tree;
+	std::vector< std::string > classes;
+	std::vector< std::vector<std::string> > features;
+	int* examples;
+	unsigned int numberOfExamples;
 
 };
 
