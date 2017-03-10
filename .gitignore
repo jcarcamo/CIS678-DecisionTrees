@@ -23,5 +23,12 @@ DecisionTrees.sln
 DecisionTrees.vcxproj
 Release/
 x64/
+#Xcode - worst of all!!!
+DecisionTrees/
+DecisionTrees.xcodeproj/
+DecisionTrees/DecisionTrees.xcodeproj/project.pbxproj
+DecisionTrees/DecisionTrees.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+DecisionTrees/DecisionTrees.xcodeproj/project.xcworkspace/xcuserdata/jcarcamo.xcuserdatad/UserInterfaceState.xcuserstate
+DecisionTrees/DecisionTrees/main.cpp
 #Third-party-libs
 vendor/
