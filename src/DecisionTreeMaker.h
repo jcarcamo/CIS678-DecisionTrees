@@ -9,26 +9,18 @@
 #define DECISIONTREEMAKER_H_
 
 #include "Node.h"
+#include "Feature.h"
 #include <iostream>
 #include <fstream>
-#include <iomanip>
 #include <string>
 #include <algorithm>
-#include <sstream>
-#include <unordered_map>
-#include <deque>
+#include <cmath>
 #include <vector>
 #include <iterator>
 #include <chrono>
 #include <cstdlib>
 #include <json_writer.h>
-//#include <json_reader.h>
-#include <pt.h>
 
-// for simple analysis, and analyzedDocumentsSWData.csv for SW analysis.
-//
-// Additionally execution times are stored in execTime.csv and execTimeSW.csv for
-//
 // Example:
 // 		DecisionTreeMaker dtm;
 //		dtm.createDecisionTree(document, type);
@@ -36,15 +28,23 @@
 
 class DecisionTreeMaker {
 public:
+	enum fileType {
+		ASCII,
+		JSON,
+	};
+
+	enum {
+		HEADERS,
+		NOHEADERS,
+	};
 	DecisionTreeMaker();
 	
-        // Performs a simple analysis of a document based in the type of the document
 	// inputs:
 	//		std:string examples_file_path,
 	//		int type: 0 examples with headers 
 	//			  1 without headers
 	void createDecisionTree(std::string examples_file_path,int type);
-
+	void saveTree(int fileType);
 	virtual ~DecisionTreeMaker();
 
 private:
@@ -53,29 +53,30 @@ private:
 		FEATURES=2,
 		EXAMPLES=3,
 	};
-	// Uses std::replace_if to replace invalid characters with white spaces
-	// Uses std::transform to replace all the chars in the string to lowercase
-	// inputs:
-	//		std::string str: String to be modified
+
 	void parseFileWithHeaders(std::string examples_file_wh);
 
-	// Uses std::replace_if to replace invalid characters with white spaces
-	// Uses std::transform to replace all the chars in the string to lowercase
-	// inputs:
-	//              std::string str: String to be modified
 	void parseFileNoHeaders(std::string examples_file_nh);
 	
 	std::vector<std::string> split(const char *str, char c = ' ');
-	int findFeatureValueIndex(std::vector<std::string> feature, std::string featureValue);
+	long findValueIndex(std::vector<std::string> feature, std::string featureValue);
 	void printExamples();
 
-	void id3();
+	bool areAllExamplesFromOneClass(long* S, unsigned long size);
+	bool hasFeatureBeenTested(long* testedAttributes, unsigned long sizeOfTestedAttributes, long attribute);
+	
+	long getTheMostCommonClassIndex(long* S, unsigned long size);
+	long getMaxInformationGainIndexAttribute(long* S, unsigned long sizeOfS, long* testedAttributes, unsigned long sizeOfTestedAttributes);
 
+	double findSetEntropy(long* S, unsigned long size);
+	
+	Node id3(long* S, unsigned long size, long* testedAttributes, unsigned long sizeOfTestedAttributes);
+	
 	Node tree;
 	std::vector< std::string > classes;
-	std::vector< std::vector<std::string> > features;
-	int* examples;
-	unsigned int numberOfExamples;
+	std::vector< Feature > features;
+	long* examples;
+	unsigned long numberOfExamples;
 
 };
 

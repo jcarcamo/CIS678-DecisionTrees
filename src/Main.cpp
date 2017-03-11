@@ -1,3 +1,9 @@
+/*
+* Main.cpp
+*
+*  Created on: Feb 24, 2017
+*      Author: jcarcamo
+*/
 #include "DecisionTreeMaker.h"
 
 int main(int argc, char* argv[])
@@ -11,10 +17,8 @@ int main(int argc, char* argv[])
 	std::string filePath(argv[1]);
 	
 	DecisionTreeMaker dtm;
-	dtm.createDecisionTree(filePath,0);
-    //std::cout<<"Press any key to continue"<<std::endl;
-	//getchar();
-	//dtm.createDecisionTree(filePath,1);
+	dtm.createDecisionTree(filePath,dtm.HEADERS);
+	dtm.saveTree(dtm.JSON);
 	std::cout << "Finished. Press any key to exit" << std::endl;
 	getchar();
 }
