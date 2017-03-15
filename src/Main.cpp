@@ -18,6 +18,10 @@ int main(int argc, char* argv[])
 	
 	DecisionTreeMaker dtm;
 	dtm.createDecisionTree(filePath,dtm.HEADERS);
+    TreeCount tc = dtm.countTree(dtm.getTree());
+    std::cout << "Stats --------" << std::endl;
+    std::cout << "Nodes: " << tc.nodeCount << std::endl;
+    std::cout << "Leaves: " << tc.leaveCount << std::endl;
 	dtm.saveTree(dtm.JSON);
 	std::cout << "Finished. Press any key to exit" << std::endl;
 	getchar();

@@ -3,6 +3,8 @@ docs/
 data/car.data
 data/contact-lenses.data
 data/iris.data
+data/car_training.data
+data/weather.data
 src/compile.bash
 src/makefile
 src/test

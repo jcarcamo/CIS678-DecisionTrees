@@ -25,6 +25,15 @@
 // 		DecisionTreeMaker dtm;
 //		dtm.createDecisionTree(document, type);
 
+class TreeCount{
+public:
+    TreeCount(){
+        this->nodeCount  = 0;
+        this->leaveCount = 0;
+    };
+    long nodeCount;
+    long leaveCount;
+};
 
 class DecisionTreeMaker {
 public:
@@ -44,7 +53,9 @@ public:
 	//		int type: 0 examples with headers 
 	//			  1 without headers
 	void createDecisionTree(std::string examples_file_path,int type);
+    Node getTree();
 	void saveTree(int fileType);
+    TreeCount countTree(Node node);
 	virtual ~DecisionTreeMaker();
 
 private:

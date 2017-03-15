@@ -18,6 +18,30 @@ DecisionTreeMaker::~DecisionTreeMaker()
 		std::free(this->examples);
 }
 
+Node DecisionTreeMaker::getTree(){
+    return this->tree;
+}
+TreeCount DecisionTreeMaker::countTree(Node node)
+{
+    TreeCount tc;
+
+    if (node.getChildren().empty())
+    {
+        tc.leaveCount = 1;
+    }
+    else
+    {
+        tc.nodeCount = 1;
+        for ( Node child:node.getChildren() ){
+            TreeCount childTc = countTree(child);
+            tc.nodeCount += childTc.nodeCount;
+            tc.leaveCount += childTc.leaveCount;
+        }
+    }
+    
+    return tc;
+}
+
 std::vector<std::string> DecisionTreeMaker::split(const char *str, char c)
 {
 	std::vector<std::string> result;
